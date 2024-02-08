@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
-require('dotenv').config();
+require("dotenv").config();
 const cors = require("cors");
-const Transaction = require("./models/transaction");
+const Transaction = require("./models/Transaction.js");
 const { default: mongoose } = require("mongoose");
 
 app.use(cors());
@@ -12,11 +12,43 @@ app.get("/api/test", (req, res) => {
 });
 
 app.post("/api/transaction", async (req, res) => {
-  await mongoose.connect(process.env.MONGO_URL)
-  const { name, description, datetime, price } = req.body;
-  const transaction = await Transaction.create({name, description, datetime, price})
+  try {
+    console.log("Connecting to MongoDB database...");
+    await mongoose.connect(process.env.MONGO_URL);
 
-  res.json(transaction);
+    console.log("MongoDB database connected successfully!");
+
+    // Check if all required fields are present in the request body
+    if (
+      !req.body.name ||
+      !req.body.description ||
+      !req.body.datetime ||
+      !req.body.price
+    ) {
+      res.status(400).send("Missing required fields");
+      return;
+    }
+
+    // Create a new transaction with the data from the request body
+    const { name, description, datetime, price } = req.body;
+    const transaction = await Transaction.create({
+      name,
+      description,
+      datetime,
+      price,
+    });
+
+    res.json(transaction);
+  } catch (error) {
+    console.error("Error connecting to MongoDB database:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.get("/api/transactions", async (req, res) => {
+  await mongoose.connect(process.env.MONGO_URL);
+  const transactions = await Transaction.find();
+  res.json(transactions);
 });
 
 app.listen(4040);
