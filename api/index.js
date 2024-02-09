@@ -18,7 +18,6 @@ app.post("/api/transaction", async (req, res) => {
 
     console.log("MongoDB database connected successfully!");
 
-    // Check if all required fields are present in the request body
     if (
       !req.body.name ||
       !req.body.description ||
@@ -28,8 +27,6 @@ app.post("/api/transaction", async (req, res) => {
       res.status(400).send("Missing required fields");
       return;
     }
-
-    // Create a new transaction with the data from the request body
     const { name, description, datetime, price } = req.body;
     const transaction = await Transaction.create({
       name,
@@ -37,7 +34,6 @@ app.post("/api/transaction", async (req, res) => {
       datetime,
       price,
     });
-
     res.json(transaction);
   } catch (error) {
     console.error("Error connecting to MongoDB database:", error);
@@ -52,5 +48,3 @@ app.get("/api/transactions", async (req, res) => {
 });
 
 app.listen(4040);
-// wemy9cqCvDjgET2E
-//vdRipY4VW0n3ymzL

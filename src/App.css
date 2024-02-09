@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #17181f;
+  background-color: #1a1a1b;
   color: #ddd;
 }
 
@@ -19,7 +19,7 @@ h1 {
   font-size: 2.5rem;
 }
 
-h1 span{
+h1 span {
   font-size: 1rem;
   vertical-align: top;
   display: inline-block;
@@ -27,34 +27,88 @@ h1 span{
 }
 
 form {
-  margin-top: 20px;
-}
-
-form input {
-  width: 100%;
-  background-color: transparent;
-  color: #ddd;
-  border: 2px solid #30313d;
-  padding: 2px 5px;
-  border-radius: 5px;
-}
-
-form input[type="datetime-local"] {
-  color: #777;
-}
-
-form div.basic {
   display: flex;
-  gap: 5px;
-  margin-bottom: 5px;
+  justify-content: center;
+  align-items: center;
+  min-height: 350px;
+  width: 300px;
+  flex-direction: column;
+  gap: 35px;
+  border-radius: 15px;
+  border-radius: 8px;
+}
+
+.input {
+  position: relative;
+  width: 250px;
+}
+
+.input input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  color: #a3a3a3;
+  font-size: 1em;
+  background: transparent;
+  border-left: 1.5px solid #2c2c2c;
+  border-bottom: 2px solid #818181;
+  transition: 0.1s;
+  border-bottom-left-radius: 5px;
+}
+
+.input span {
+  margin-top: 10px;
+  position: absolute;
+  left: 0;
+  transform: translateY(-4px);
+  margin-left: 3px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 10px;
+  color: #a3a3a3;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 3px;
+  border-radius: 8px;
+}
+
+.input input:valid ~ span,
+.input input:focus ~ span {
+  transform: translateX(156px) translateY(-23px);
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background: #0a0a0a;
+  letter-spacing: 0.2em;
+  color: #fff;
+  border: 2px;
+}
+
+.input input:valid,
+.input input:focus {
+  border: 1.5px solid #818181;
+  border-radius: 6px;
 }
 
 form button {
+  height: 45px;
   width: 100%;
-  margin-top: 5px;
-  border: 0;
-  padding: 5px;
-  background-color: #ddd;
+  border-radius: 5px;
+  border: 2px solid #d4d4d4;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.5s;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 3em;
+  margin-top: 10px;
+  color: #d4d4d4;
+}
+
+form button:hover {
+  background-color: #d4d4d4;
+  color: rgb(0, 0, 0);
 }
 
 div.transactions {
@@ -73,7 +127,8 @@ div.transaction:first-child {
 }
 
 div.transaction div.name {
-  font-size: 1rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
 }
 
 div.transaction div.description {

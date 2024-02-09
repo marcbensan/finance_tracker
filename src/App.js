@@ -59,51 +59,58 @@ function App() {
         ${balance}
         <span>.00</span>
       </h1>
-      <form action="" onSubmit={addNewTransaction}>
-        <div className="basic">
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder={"price and name"}
-          />
-          <input
-            value={datetime}
-            onChange={(e) => setDatetime(e.target.value)}
-            type="datetime-local"
-          />
-        </div>
-        <div className="description">
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder={"description"}
-          />
-        </div>
-        <button type="submit">Add new transaction</button>
-      </form>
-      <div className="transactions">
-        {transactions.length > 0 &&
-          transactions.map((transaction, index) => (
-            <div key={index} className="transaction">
-              <div className="left">
-                <div className="name">{transaction.name}</div>
-                <div className="description">{transaction.description}</div>
-              </div>
-              <div className="right">
-                {/* console.log(transaction.price); */}
-                <div
-                  className={
-                    "price " + (transaction.price < 0 ? "red" : "green")
-                  }
-                >
-                  {transaction.price}
+      <div className="card">
+        <form action="" onSubmit={addNewTransaction}>
+          <div className="input">
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required="required"
+            />
+            <span className="name">Name</span>
+          </div>
+          <div className="input">
+            <input
+              value={datetime}
+              onChange={(e) => setDatetime(e.target.value)}
+              type="datetime-local"
+              required="required"
+            />
+          </div>
+          <div className="input">
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required="required"
+            />
+            <span>Description</span>
+          </div>
+          <button type="submit">Add new transaction</button>
+        </form>
+        <div className="transactions">
+          {transactions.length > 0 &&
+            transactions.map((transaction, index) => (
+              <div key={index} className="transaction">
+                <div className="left">
+                  <div className="name">{transaction.name}</div>
+                  <div className="description">{transaction.description}</div>
                 </div>
-                <div className="datetime">{transaction.datetime}</div>
+                <div className="right">
+                  {/* console.log(transaction.price); */}
+                  <div
+                    className={
+                      "price " + (transaction.price < 0 ? "red" : "green")
+                    }
+                  >
+                    ${transaction.price}
+                  </div>
+                  <div className="datetime">{transaction.datetime}</div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+        </div>
       </div>
     </main>
   );
