@@ -15,10 +15,10 @@ app.post("/api/transaction", async (req, res) => {
   try {
     console.log("Connecting to MongoDB database...");
     await mongoose.connect(process.env.MONGO_URL);
-
     console.log("MongoDB database connected successfully!");
 
     if (
+      !req.body.transactionType ||
       !req.body.name ||
       !req.body.description ||
       !req.body.datetime ||
@@ -27,8 +27,9 @@ app.post("/api/transaction", async (req, res) => {
       res.status(400).send("Missing required fields");
       return;
     }
-    const { name, description, datetime, price } = req.body;
+    const { transactionType, name, description, datetime, price } = req.body;
     const transaction = await Transaction.create({
+      transactionType,
       name,
       description,
       datetime,

@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #1a1a1b;
+  background-color: #1f1b1b;
   color: #ddd;
 }
 
@@ -15,15 +15,15 @@ main {
 h1 {
   text-align: center;
   color: #fff;
-  margin: 0;
   font-size: 2.5rem;
+  margin-bottom: 40px;
 }
 
 h1 span {
   font-size: 1rem;
   vertical-align: top;
   display: inline-block;
-  margin-top: 6px;
+  margin-top: 27px;
 }
 
 form {
@@ -33,9 +33,39 @@ form {
   min-height: 350px;
   width: 300px;
   flex-direction: column;
-  gap: 35px;
+  gap: 15px;
   border-radius: 15px;
   border-radius: 8px;
+}
+
+.transType {
+  width: 100%;
+  display: flex;
+  padding-left: 26px;
+}
+
+.transType input[type="radio"] {
+  display: none;
+}
+
+.transType label {
+  display: inline-block;
+  font-size: 10px;
+  color: #a3a3a3;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 3px;
+  margin-right: 10px;
+  padding: 3px 5px;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.transType input[type="radio"]:checked + label {
+  background-color: #d4d4d4;
+  color: #1f1b1b;
 }
 
 .input {
@@ -75,9 +105,9 @@ form {
 
 .input input:valid ~ span,
 .input input:focus ~ span {
-  transform: translateX(156px) translateY(-23px);
-  font-size: 0.8em;
-  padding: 5px 10px;
+  transform: translateX(156px) translateY(-18px);
+  font-size: 0.6em;
+  padding: 2px 10px;
   background: #0a0a0a;
   letter-spacing: 0.2em;
   color: #fff;
@@ -127,8 +157,11 @@ div.transaction:first-child {
 }
 
 div.transaction div.name {
-  font-size: 0.9rem;
+  font-size: 17px;
+  color: #cacaca;
   text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 1px;
 }
 
 div.transaction div.description {

@@ -2,6 +2,8 @@ import "./App.css";
 import { useState, useEffect } from "react";
 
 function App() {
+  const [transactionType, setTransactionType] = useState("");
+  const [price, setPrice] = useState("");
   const [name, setName] = useState("");
   const [datetime, setDatetime] = useState("");
   const [description, setDescription] = useState("");
@@ -12,10 +14,10 @@ function App() {
   }, []);
 
   async function getTransactions() {
-    // const url = (process.env.REACT_APP_API_URL + "/transaction");
-    const url = "http://localhost:4040/api" + "/transactions";
+    const url = "http://localhost:4040/api/transactions";
     const response = await fetch(url);
-    return await response.json();
+    const transactions = await response.json();
+    return transactions.sort((a, b) => new Date(b.datetime) - new Date(a.datetime));
   }
 
   function addNewTransaction(e) {
@@ -24,19 +26,20 @@ function App() {
     const url = "http://localhost:4040/api" + "/transaction";
     console.log(url);
 
-    const price = name.split(" ")[0];
-
     fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        transactionType,
         price,
-        name: name.substring(price.length + 1),
+        name,
         description,
         datetime,
       }),
     }).then((response) => {
       response.json().then((json) => {
+        setTransactionType("");
+        setPrice("");
         setName("");
         setDatetime("");
         setDescription("");
@@ -47,8 +50,9 @@ function App() {
 
   let balance = 0;
   for (const transaction of transactions) {
-    balance = balance + transaction.price;
-  }
+    balance += transaction.transactionType === "gained" ? + transaction.price : - transaction.price;
+}
+
   balance = balance.toFixed(2);
   const fraction = balance.split(".")[1];
   balance = balance.split(".")[0];
@@ -57,10 +61,40 @@ function App() {
     <main>
       <h1>
         ${balance}
-        <span>.00</span>
+        <span>.{fraction || "00"}</span>
       </h1>
       <div className="card">
         <form action="" onSubmit={addNewTransaction}>
+
+          <div className="transType">
+            <input
+              type="radio"
+              id="gained"
+              name="transactionType"
+              value="gained"
+              checked={transactionType === "gained"}
+              onChange={() => setTransactionType("gained")}
+            />
+            <label htmlFor="gained">Gained</label>
+            <input
+              type="radio"
+              id="spent"
+              name="transactionType"
+              value="spent"
+              checked={transactionType === "spent"}
+              onChange={() => setTransactionType("spent")}
+            />
+            <label htmlFor="spent">Spent</label>
+          </div>
+          <div className="input">
+            <input
+              type="number"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              required="required"
+            />
+            <span className="price">Price</span>
+          </div>
           <div className="input">
             <input
               type="text"
@@ -101,9 +135,10 @@ function App() {
                   {/* console.log(transaction.price); */}
                   <div
                     className={
-                      "price " + (transaction.price < 0 ? "red" : "green")
+                      "price " + (transaction.transactionType === "gained" ? "green" : "red")
                     }
                   >
+                  {transaction.transactionType === "spent" ? "-" : ""}
                     ${transaction.price}
                   </div>
                   <div className="datetime">{transaction.datetime}</div>
