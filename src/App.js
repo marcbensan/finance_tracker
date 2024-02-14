@@ -17,13 +17,15 @@ function App() {
     const url = "http://localhost:4040/api/transactions";
     const response = await fetch(url);
     const transactions = await response.json();
-    return transactions.sort((a, b) => new Date(b.datetime) - new Date(a.datetime));
+    return transactions.sort(
+      (a, b) => new Date(b.datetime) - new Date(a.datetime)
+    );
   }
 
   function addNewTransaction(e) {
     e.preventDefault();
     // const url = (process.env.REACT_APP_API_URL + "/transaction");
-    const url = "http://localhost:4040/api" + "/transaction";
+    const url = "http://localhost:4040/api/transaction";
     console.log(url);
 
     fetch(url, {
@@ -50,8 +52,11 @@ function App() {
 
   let balance = 0;
   for (const transaction of transactions) {
-    balance += transaction.transactionType === "gained" ? + transaction.price : - transaction.price;
-}
+    balance +=
+      transaction.transactionType === "gained"
+        ? +transaction.price
+        : -transaction.price;
+  }
 
   balance = balance.toFixed(2);
   const fraction = balance.split(".")[1];
@@ -65,7 +70,6 @@ function App() {
       </h1>
       <div className="card">
         <form action="" onSubmit={addNewTransaction}>
-
           <div className="transType">
             <input
               type="radio"
@@ -135,11 +139,14 @@ function App() {
                   {/* console.log(transaction.price); */}
                   <div
                     className={
-                      "price " + (transaction.transactionType === "gained" ? "green" : "red")
+                      "price " +
+                      (transaction.transactionType === "gained"
+                        ? "green"
+                        : "red")
                     }
                   >
-                  {transaction.transactionType === "spent" ? "-" : ""}
-                    ${transaction.price}
+                    {transaction.transactionType === "spent" ? "-" : ""}$
+                    {transaction.price}
                   </div>
                   <div className="datetime">{transaction.datetime}</div>
                 </div>
