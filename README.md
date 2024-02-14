@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# FINANCIAL TRACKER 📊💰
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Financial Tracker App! This application is designed to help users track their spending and monitor their financial activities efficiently. Whether you're looking to manage your personal finances or keep a close eye on your monetary gains, this software provides a solution to your needs.
 
-## Available Scripts
+## Software Showcase:
 
-In the project directory, you can run:
+[![Video Thumbnail](https://img.youtube.com/vi/6pMffDHfg2g/0.jpg)](https://youtu.be/6pMffDHfg2g)
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Stack Used:
+MERN Stack: MongoDB, Express.js, React.js, Node.js - This project is built using the popular MERN stack, leveraging MongoDB for database management, Express.js for backend development, React.js for the frontend interface, and Node.js for server-side scripting.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+MongoDB: MongoDB is utilized as the database management system for storing and retrieving financial data efficiently.
 
-### `yarn test`
+Express.js: Express.js is used to create the backend API endpoints for handling user requests, data processing, and interaction with the database.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+React.js: React.js is employed to build the user interface, allowing for dynamic and interactive components for seamless user interaction.
 
-### `yarn build`
+Node.js: Node.js powers the server-side logic, enabling the application to handle concurrent requests and perform server-side operations effectively.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Features:
+Expense Tracking: Easily record your expenses with details such as amount, date, and description. This feature allows you to categorize your spending and gain insights into your financial habits.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Income Management: Keep track of your income sources and monitor your earnings over time. You can input various sources of income along with relevant details for accurate financial analysis.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# HOW TO RUN THE PROIGRAM 🚀
 
-### `yarn eject`
+To start using the Financial Tracker, follow these steps:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Install Dependencies: Navigate to the project directory and install the necessary dependencies using Yarn:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`yarn install`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Start the Application: Start the application by running the following command:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`yarn start`
 
-## Learn More
+API Setup: If you wish to run the API using nodemon for automatic server restarts during development, install nodemon globally:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`yarn install -g nodemon`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Then, start the API server using nodemon:
 
-### Code Splitting
+`nodemon index.js`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Access the Application: Once the server is running, you can access the application by navigating to http://localhost:4040 in your web browser.
 
-### Analyzing the Bundle Size
+### Thanks for checking out my work! Have fun tracking! 🎉
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
