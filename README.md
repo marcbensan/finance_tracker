@@ -23,7 +23,7 @@ Expense Tracking: Easily record your expenses with details such as amount, date,
 
 Income Management: Keep track of your income sources and monitor your earnings over time. You can input various sources of income along with relevant details for accurate financial analysis.
 
-# HOW TO RUN THE PROIGRAM 🚀
+# HOW TO RUN THE PROGRAM 🚀
 
 To start using the Financial Tracker, follow these steps:
 
